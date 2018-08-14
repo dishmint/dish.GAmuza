@@ -1,5 +1,6 @@
 class 'Star'
 
 function Star:__init()
-
+  self.x = ofRandom(0, OUTPUT_W)
+  self.y = ofRandom(0, OUTPUT_H)
 end
