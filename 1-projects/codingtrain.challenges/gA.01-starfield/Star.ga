@@ -3,16 +3,20 @@ class 'Star'
 function Star:__init()
   self.x = ofRandom(0, OUTPUT_W)
   self.y = ofRandom(0, OUTPUT_H)
+  // Maybe add random min and max factor
 end
 
 function Star:update()
-  
   if (self.x < 1) or (self.x > OUTPUT_W) then
-    self.x = ofRandom(OUTPUT_W)
+    xRespawnRangeMin = (OUTPUT_W/2.0 - OUTPUT_W/8.0)
+    xRespawnRangeMax = (OUTPUT_W/2.0 + OUTPUT_W/8.0)
+    self.x = ofRandom(xRespawnRangeMin,xRespawnRangeMax)
   end
   
   if (self.y < 1) or (self.y > OUTPUT_H) then
-    self.y = ofRandom(OUTPUT_H)
+    yRespawnRangeMin = (OUTPUT_H/2.0 - OUTPUT_H/8.0)
+    yRespawnRangeMax = (OUTPUT_H/2.0 + OUTPUT_H/8.0)
+    self.y = ofRandom(yRespawnRangeMin,yRespawnRangeMax)
   end
 end
 
@@ -20,9 +24,28 @@ function Star:show()
   
   ofSetColor(255,255)
   
-  self.x = self.x + ofMap((self.x - OUTPUT_W/2.0), (-1 * (OUTPUT_W/2.0)), (OUTPUT_W/2.0), -1, 1)
-  self.y = self.y + ofMap((self.y - OUTPUT_H/2.0), (-1 * (OUTPUT_H/2.0)), (OUTPUT_H/2.0), -1, 1)
+  local xAdjust = ofMap((self.x - OUTPUT_W/2.0), (-1 * (OUTPUT_W/2.0)), (OUTPUT_W/2.0), -1, 1)
+  local yAdjust = ofMap((self.y - OUTPUT_H/2.0), (-1 * (OUTPUT_H/2.0)), (OUTPUT_H/2.0), -1, 1)
   
-  ofEllipse(self.x, self.y, 8, 8)
+  self.x = self.x + xAdjust
+  self.y = self.y + yAdjust
   
-end
+  // ofEllipse(self.x, self.y, 10, 10)
+  
+  bzptW = ofBezierPoint(
+    ofVec3f(5.0, 5.0, 0.0),
+    ofVec3f(1.5, 1.5, 0.0),
+    ofVec3f(1.5, 1.5, 0.0),
+    ofVec3f(5.0, 5.0, 0.0),
+    ofNormalize(self.x, 0, OUTPUT_W))
+  
+  ofEllipse(
+    self.x,
+    self.y,
+    bzptW.x,
+    bzptW.y
+    )
+    
+    // ofEllipse(self.x, self.y, 10 * ofNormalize(xAdjust, -1, 1), 10 * ofNormalize(yAdjust, -1, 1))
+    
+  end
