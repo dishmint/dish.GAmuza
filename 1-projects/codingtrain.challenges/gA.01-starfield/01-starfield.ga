@@ -7,9 +7,6 @@ end
 
 function update()
 
-
-
-
 end
 
 function draw()
