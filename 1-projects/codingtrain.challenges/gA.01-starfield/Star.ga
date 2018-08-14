@@ -3,14 +3,15 @@ class 'Star'
 function Star:__init()
   self.x = ofRandom(0, OUTPUT_W)
   self.y = ofRandom(0, OUTPUT_H)
-  self.z = ofRandom(OUTPUT_W)
 end
 
 function Star:update()
-  self.z = self.z - 1
-  if (self.z < 1) then
-    self.z = OUTPUT_W
+  
+  if (self.x < 1) or (self.x > OUTPUT_W) then
     self.x = ofRandom(OUTPUT_W)
+  end
+  
+  if (self.y < 1) or (self.y > OUTPUT_H) then
     self.y = ofRandom(OUTPUT_H)
   end
 end
@@ -18,9 +19,10 @@ end
 function Star:show()
   
   ofSetColor(255,255)
-
-  self.x = self.x + ofMap(ofNormalize(self.z, 0, OUTPUT_W), 0, 1, -1, 1)
-  self.y = self.y + ofMap(ofNormalize(self.z, 0, OUTPUT_W), 0, 1, -1, 1)
+  
+  self.x = self.x + ofMap((self.x - OUTPUT_W/2.0), (-1 * (OUTPUT_W/2.0)), (OUTPUT_W/2.0), -1, 1)
+  self.y = self.y + ofMap((self.y - OUTPUT_H/2.0), (-1 * (OUTPUT_H/2.0)), (OUTPUT_H/2.0), -1, 1)
+  
   ofEllipse(self.x, self.y, 8, 8)
   
 end
