@@ -3,16 +3,16 @@ class 'Star'
 function Star:__init()
   self.x = ofRandom(0, OUTPUT_W)
   self.y = ofRandom(0, OUTPUT_H)
-  // Maybe add random min and max factor
 end
 
 function Star:update()
+  // RESPAWN X IN THE MIDDLE SOMEWHERE
   if (self.x < 1) or (self.x > OUTPUT_W) then
     xRespawnRangeMin = (OUTPUT_W/2.0 - OUTPUT_W/8.0)
     xRespawnRangeMax = (OUTPUT_W/2.0 + OUTPUT_W/8.0)
     self.x = ofRandom(xRespawnRangeMin,xRespawnRangeMax)
   end
-  
+  // RESPAWN Y IN THE MIDDLE SOMEWHERE
   if (self.y < 1) or (self.y > OUTPUT_H) then
     yRespawnRangeMin = (OUTPUT_H/2.0 - OUTPUT_H/8.0)
     yRespawnRangeMax = (OUTPUT_H/2.0 + OUTPUT_H/8.0)
@@ -22,15 +22,16 @@ end
 
 function Star:show()
   
-  ofSetColor(255,255)
+  // CALCULATE VECTOR FROM CENTER OF CANVAS
   
   local xAdjust = ofMap((self.x - OUTPUT_W/2.0), (-1 * (OUTPUT_W/2.0)), (OUTPUT_W/2.0), -1, 1)
   local yAdjust = ofMap((self.y - OUTPUT_H/2.0), (-1 * (OUTPUT_H/2.0)), (OUTPUT_H/2.0), -1, 1)
   
+  // UPDATE POSITION WITH NEW VECTOR
   self.x = self.x + xAdjust
   self.y = self.y + yAdjust
   
-  // ofEllipse(self.x, self.y, 10, 10)
+//  BEZIER POINT FOR PARABOLIC SCALING OF SIZE AND COLOR OF STARS
   
   bzptW = ofBezierPoint(
     ofVec3f(5.0, 5.0, 0.0),
@@ -39,13 +40,13 @@ function Star:show()
     ofVec3f(5.0, 5.0, 0.0),
     ofNormalize(self.x, 0, OUTPUT_W))
   
+  ofSetColor(ofMap(bzptW.x, 1.5, 5, 130, 255),255)
+  
   ofEllipse(
     self.x,
     self.y,
     bzptW.x,
     bzptW.y
     )
-    
-    // ofEllipse(self.x, self.y, 10 * ofNormalize(xAdjust, -1, 1), 10 * ofNormalize(yAdjust, -1, 1))
     
   end

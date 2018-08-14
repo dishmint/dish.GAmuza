@@ -2,10 +2,12 @@
 File:: 01-starfield
 */
 
+// ARRAY FOR STAR OBJECTS
 stars = {}
 starcount = 800
 
 function setup()
+  // FILL STARS ARRAY
   for i=1,starcount do
     stars[i] = Star()
   end
@@ -17,6 +19,7 @@ end
 
 function draw()
   gaBackground(0.0 ,1.0)
+  // UPDATE AND DRAW STARS
   table.foreach(stars,
     function (i)
       stars[i]:update()
