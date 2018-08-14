@@ -5,3 +5,12 @@ function Star:__init()
   self.y = ofRandom(0, OUTPUT_H)
   self.z = ofRandom(0, OUTPUT_H)
 end
+
+function Star:update()
+  
+end
+
+function Star:show()
+  ofSetColor(255,255)
+  ofEllipse(self.x, self.y, 8, 8)
+end

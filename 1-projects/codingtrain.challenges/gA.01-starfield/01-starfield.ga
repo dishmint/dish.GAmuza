@@ -17,4 +17,9 @@ end
 
 function draw()
    gaBackground(0.0 ,1.0)
+   table.foreach(stars,
+     function (i)
+       stars[i]:update()
+       stars[i]:show()
+     end)
 end
