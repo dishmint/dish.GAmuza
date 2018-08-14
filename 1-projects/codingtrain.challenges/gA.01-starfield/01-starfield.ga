@@ -3,7 +3,7 @@ File:: 01-starfield
 */
 
 stars = {}
-starcount = 100
+starcount = 400
 
 function setup()
   for i=1,starcount do
@@ -12,14 +12,14 @@ function setup()
 end
 
 function update()
-
+  
 end
 
 function draw()
-   gaBackground(0.0 ,1.0)
-   table.foreach(stars,
-     function (i)
-       stars[i]:update()
-       stars[i]:show()
-     end)
-end
+  gaBackground(0.0 ,1.0)
+  table.foreach(stars,
+    function (i)
+      stars[i]:update()
+      stars[i]:show()
+    end)
+  end
