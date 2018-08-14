@@ -2,7 +2,13 @@
 File:: 01-starfield
 */
 
+stars = {}
+starcount = 100
+
 function setup()
+  for i=1,starcount do
+    stars[i] = Star()
+  end
 end
 
 function update()
@@ -10,5 +16,5 @@ function update()
 end
 
 function draw()
-   gaBackground(0.5 ,1.0)
+   gaBackground(0.0 ,1.0)
 end
