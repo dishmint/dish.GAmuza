@@ -2,20 +2,10 @@
 File:: 02-mengerspongefractal
 */
 
-fCount = 0
-
 function setup()
 end
 
 function update()
-
-
-// SAVE FRAMES
-filestring = string.format("02-mengerspongefractal%09d.jpg",fCount)
-gaSaveFrame(gaDataPath("frames/" .. filestring))
-fCount += 1
-// SEQ => VIDEO: IN DATA FOLDER — img2video <imgseq_name> <imgseq_format> <output_format>
-
 end
 
 function draw()
