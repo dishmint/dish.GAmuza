@@ -5,6 +5,24 @@ function box:__init(xyzVec, s)
   self.size = s
 end
 
+function box:generate ()
+  boxArray = {}
+  for x=-1,1 do
+    for y=-1,1 do
+      for z=-1,1 do
+        local newSize = self.size / 3.0
+        local newX = self.pos.x + (x * newSize)
+        local newY = self.pos.y + (y * newSize)
+        local newZ = self.pos.z + (z * newSize)
+        local subBox = Box(ofVec3f(newX, newY, newZ), newSize)
+        table.insert(boxArray, subBox)
+      end
+    end
+  end
+  return boxArray
+end
+
+
 function box:show ()
   ofPushMatrix()
     ofTranslate(self.pos.x, self.pos.y, self.pos.z)

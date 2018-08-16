@@ -6,7 +6,18 @@ angle = 0
 
 topBox = box(ofVec3f(0.0,0.0,0.0),200)
 
+sponge = {}
+
+bg = 0.0
+
 function setup()
+  table.insert(sponge, topBox)
+end
+
+function mousePressed()
+  bg = bg + 100
+  nextSponge = sponge[0]:generate()
+  sponge = nextSponge
 end
 
 function update()
@@ -14,11 +25,15 @@ function update()
 end
 
 function draw()
-  gaBackground(0.5 ,1.0)
+  gaBackground(bg ,1.0)
   
   ofPushMatrix()
   ofTranslate(OUTPUT_W/2.0,OUTPUT_H/2.0,0.0)
   ofRotateX(angle)
-  topBox:show()
+  table.foreach(sponge,
+    function (n)
+      sponge[n]:show()
+    end
+  )
   ofPopMatrix()
 end
