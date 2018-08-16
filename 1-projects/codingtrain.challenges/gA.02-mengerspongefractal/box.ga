@@ -1,5 +1,6 @@
 class 'box'
 
-function box:__init()
-
+function box:__init(xyzVec, s)
+  self.pos = xyzVec
+  self.size = s
 end
