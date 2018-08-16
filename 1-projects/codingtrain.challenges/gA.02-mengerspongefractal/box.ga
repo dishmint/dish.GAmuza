@@ -1,0 +1,5 @@
+class 'box'
+
+function box:__init()
+
+end
