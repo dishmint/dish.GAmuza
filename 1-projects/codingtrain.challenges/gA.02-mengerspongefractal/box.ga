@@ -4,3 +4,14 @@ function box:__init(xyzVec, s)
   self.pos = xyzVec
   self.size = s
 end
+
+function box:show ()
+  ofPushMatrix()
+    ofTranslate(self.pos.x, self.pos.y, self.pos.z)
+    
+    ofSetColor(255,0,0,255)
+    ofNoFill()
+    ofSetLineWidth(5)
+    ofDrawBox(self.size)
+  ofPopMatrix()
+end

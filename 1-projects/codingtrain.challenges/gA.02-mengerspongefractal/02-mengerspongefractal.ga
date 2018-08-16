@@ -4,11 +4,13 @@ File:: 02-mengerspongefractal
 
 angle = 0
 
+topBox = box(ofVec3f(0.0,0.0,0.0),200)
+
 function setup()
 end
 
 function update()
-  angle = angle + 0.1
+  angle = angle + 1
 end
 
 function draw()
@@ -17,10 +19,6 @@ function draw()
   ofPushMatrix()
   ofTranslate(OUTPUT_W/2.0,OUTPUT_H/2.0,0.0)
   ofRotateX(angle)
-  
-  ofSetColor(255,255)
-  ofNoFill()
-  ofSetLineWidth(5)
-  ofDrawBox(200)
+  topBox:show()
   ofPopMatrix()
 end
