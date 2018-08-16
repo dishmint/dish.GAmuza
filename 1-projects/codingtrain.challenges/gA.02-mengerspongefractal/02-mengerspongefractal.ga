@@ -2,12 +2,25 @@
 File:: 02-mengerspongefractal
 */
 
+angle = 0
+
 function setup()
 end
 
 function update()
+  angle = angle + 0.1
 end
 
 function draw()
-   gaBackground(0.5 ,1.0)
+  gaBackground(0.5 ,1.0)
+  
+  ofPushMatrix()
+  ofTranslate(OUTPUT_W/2.0,OUTPUT_H/2.0,0.0)
+  ofRotateX(angle)
+  
+  ofSetColor(255,255)
+  ofNoFill()
+  ofSetLineWidth(5)
+  ofDrawBox(200)
+  ofPopMatrix()
 end
