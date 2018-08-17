@@ -1,0 +1,40 @@
+/*
+File:: mirrordraw4
+GAmuza empty sketch
+*/
+previous = ofVec2f()
+current = ofVec2f()
+
+function setup()
+  previous:set(0,0)
+  current:set(ofRandom(OUTPUT_W),ofRandom(OUTPUT_H))
+end
+
+function update()
+  if gaGetFrameNum()%2 == 0 then
+    current:set(ofRandom(OUTPUT_W),ofRandom(OUTPUT_H))
+  end
+
+end
+
+function draw()
+  gaBackground(0.0 ,0.07)
+  ofSetColor(255)
+  ofSetLineWidth(10)
+  ofLine(previous.x, previous.y, current.x, current.y)
+
+  ofPushMatrix()
+  ofSetColor(255, 0, 0)
+  ofSetLineWidth(10)
+
+  local lineX1 = OUTPUT_W - (previous.x)
+  local lineY1 = OUTPUT_H - (previous.y)
+  local lineX2 = OUTPUT_W - (current.x)
+  local lineY2 = OUTPUT_H - (current.y)
+
+  ofLine(lineX1, lineY1, lineX2, lineY2)
+  ofPopMatrix()
+
+  previous.x = current.x
+  previous.y = current.y
+end

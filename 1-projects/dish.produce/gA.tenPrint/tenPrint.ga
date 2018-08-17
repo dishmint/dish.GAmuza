@@ -1,0 +1,39 @@
+/*
+File:: tenPrint
+GAmuza empty sketch
+// Add true type font? -- How should I add other characters?
+*/
+x,y = 0, 0
+
+scale = 20
+
+function setup()
+  ofEnableSmoothing()
+end
+
+function update()
+
+end
+
+function draw()
+  // gaBackground(0.0 ,0.0)
+  gaBackground(0.0 ,0.05)
+  // gaBackground(0.0 ,0.0)
+  ofSetColor(ofRandomuf()*255,ofRandomuf()*255,ofRandomuf()*255,255)
+
+  if ofRandomuf() < 0.5 then
+    ofLine(x,y,x+(OUTPUT_W/scale),y+(OUTPUT_H/scale))
+  else
+    ofLine(x,y+(OUTPUT_H/scale),x+(OUTPUT_W/scale),y)
+  end
+
+  x+=(OUTPUT_W/scale)
+  if y > (OUTPUT_H - (OUTPUT_H/scale)) then
+    y = 0
+  end
+  if x > OUTPUT_W then
+    x = 0
+    y += OUTPUT_H/scale
+  end
+
+end

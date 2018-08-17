@@ -1,0 +1,32 @@
+/*
+File:: growth
+GAmuza empty sketch
+*/
+
+// Empty Table for holding liner objects
+liners = {}
+// Fill the Table with liner objects
+for i=0,3 do
+  liners[i] = liner(ofRandom(OUTPUT_W),ofRandom(OUTPUT_H))
+end
+
+function setup()
+  ofEnableSmoothing()
+end
+
+function update()
+
+  for i=0,3 do
+    liners[i]:update()
+  end
+
+end
+
+function draw()
+  gaBackground(0.0 ,0.0)
+
+  for i=0,3 do
+    liners[i]:draw()
+  end
+
+end
