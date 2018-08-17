@@ -8,7 +8,7 @@ In here / [**projects**](./1-projects) / you will find my GAmuza project files
 
 GAmuza's / [**homepage**](http://gamuza.d3cod3.org) /
 
-About GAmuza:
+## About GAmuza
 
 "The original idea was to make creative coding easier; then, usually jumping from Processing to OF, always trying new libraries/addons, the desire was, having OF with a Processing like IDE, + a bunch of GUI modules to avoid the technical programming stuff like Computer Vision, Audio Analysis, Arduino communication, etc..
 
