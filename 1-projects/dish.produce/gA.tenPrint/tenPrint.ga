@@ -20,7 +20,7 @@ function draw()
   gaBackground(0.0 ,0.05)
   // gaBackground(0.0 ,0.0)
   ofSetColor(ofRandomuf()*255,ofRandomuf()*255,ofRandomuf()*255,255)
-
+  ofSetLineWidth(5)
   if ofRandomuf() < 0.5 then
     ofLine(x,y,x+(OUTPUT_W/scale),y+(OUTPUT_H/scale))
   else
